@@ -35,7 +35,7 @@ namespace TechJobsMVC.Controllers
             ViewBag.employers = JobData.GetAllEmployers();
             ViewBag.locations = JobData.GetAllLocations();
             ViewBag.positionTypes = JobData.GetAllPositionTypes();
-            ViewBag.skills = JobData.GetAllCoreCompetencies();
+            ViewBag.skills = JobData.GetAllCoreCompetencies();           
 
             return View();
         }

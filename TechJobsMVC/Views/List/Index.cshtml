@@ -7,8 +7,20 @@
     <tr>
         @foreach(var column in ViewBag.columns)
         {
-            <th>@column.Value</th>
+            if (@column.Value == "All")
+            {
+               <th>  
+                <a asp-controller="List" asp-action="Jobs" asp-route-column="@column.Value">@column.Value</a>
+               </th>   
+                  
+            }
+            else
+            {
+                
+                    <th>@column.Value</th>
+            }
         }
+
     </tr>
     <tr>
         @{
