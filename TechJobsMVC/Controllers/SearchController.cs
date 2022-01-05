@@ -16,6 +16,7 @@ namespace TechJobsMVC.Controllers
         public IActionResult Index()
         {
             ViewBag.columns = ListController.ColumnChoices;
+            ViewBag.jobs = new List<Job>();
             return View();
         }
 
@@ -24,6 +25,7 @@ namespace TechJobsMVC.Controllers
         [Route("/search/results")]
         public IActionResult Results(string searchType, string searchTerm)
         {
+            ViewBag.columns = ListController.ColumnChoices;
             List<Job> jobs;
             if (searchTerm == null)
             {
@@ -35,8 +37,8 @@ namespace TechJobsMVC.Controllers
                 jobs = JobData.FindByColumnAndValue(searchType, searchTerm);
                 ViewBag.title = "Jobs with " + ListController.ColumnChoices[searchType] + ": " + searchTerm;
             }
-            ViewBag.jobs = jobs;
-            return View(ListController.ColumnChoices);
+            ViewBag.jobs = jobs;            
+            return View("index");
         }
 
     }
